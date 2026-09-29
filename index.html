@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AeroNav Flight Tracker</title>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+          crossorigin=""/>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Your custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="header">
+            <div class="logo">
+                <i class="fas fa-plane"></i>
+                <span>AeroNav</span>
+            </div>
+            <div class="controls">
+                <button class="btn" onclick="centerMap()">
+                    <i class="fas fa-location-dot"></i>
+                    My Location
+                </button>
+                <button class="btn" onclick="toggleTheme()">
+                    <i class="fas fa-sun"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="search-box">
+            <input type="text" id="search" class="search-input" placeholder="Search flights...">
+        </div>
+
+        <div class="altitude-legend">
+            <h3>Altitude Filter</h3>
+            <div class="altitude-filters">
+                <label class="filter-item">
+                    <input type="checkbox" value="35000+" checked>
+                    35,000+ ft
+                    <span class="color-indicator" style="background: #0000ff;"></span>
+                </label>
+                <label class="filter-item">
+                    <input type="checkbox" value="30000-35000" checked>
+                    30,000-35,000 ft
+                    <span class="color-indicator" style="background: #00ff00;"></span>
+                </label>
+                <label class="filter-item">
+                    <input type="checkbox" value="20000-30000" checked>
+                    20,000-30,000 ft
+                    <span class="color-indicator" style="background: #ffff00;"></span>
+                </label>
+                <label class="filter-item">
+                    <input type="checkbox" value="10000-20000" checked>
+                    10,000-20,000 ft
+                    <span class="color-indicator" style="background: #ff7f00;"></span>
+                </label>
+                <label class="filter-item">
+                    <input type="checkbox" value="<10000" checked>
+                    < 10,000 ft
+                    <span class="color-indicator" style="background: #ff0000;"></span>
+                </label>
+            </div>
+        </div>
+
+        <div id="flightList" class="flight-list">
+            <!-- Flight cards will be inserted here -->
+        </div>
+    </div>
+
+    <!-- Toggle sidebar button -->
+    <button id="toggle-sidebar" class="toggle-btn">
+        <i class="fas fa-chevron-right"></i>
+    </button>
+
+    <!-- Map container -->
+    <div id="map"></div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""></script>
+    
+    <!-- Your custom JS -->
+    <script src="script.js"></script>
+</body>
+</html> 
